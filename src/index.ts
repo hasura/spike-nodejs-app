@@ -26,6 +26,11 @@ process.on('SIGINT', () => {
   process.exit(0);
 });
 
+process.on('SIGTERM', () => {
+  server.log.info("terminated");
+  process.exit(0);
+});
+
 const start = async () => {
   try {
     await server.listen({port: port, host: "0.0.0.0"});
